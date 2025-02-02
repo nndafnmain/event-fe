@@ -1,11 +1,18 @@
-import { Button } from "./components/ui/button";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Register } from "./features/auth/components/Register";
+import { Auth } from "./pages/auth/Auth";
+import { Login } from "./features/auth/components/Login";
 
 function App() {
   return (
-    <main>
-      <h1 className="text-green-800 text-3xl">Jay</h1>
-      <Button>Hey, click</Button>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/auth" element={<Auth />}>
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
