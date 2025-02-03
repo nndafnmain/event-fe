@@ -27,7 +27,7 @@ export const EventCard: React.FC<Event> = ({
   endDate,
 }) => {
   return (
-    <Card className="w-72">
+    <Card className="w-52 md:w-72">
       <CardContent className="w-full overflow-hidden p-0">
         <img
           src={imageSource}
