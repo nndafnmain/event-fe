@@ -1,11 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 export const Login = () => {
+  const form = useForm();
+  let onSubmit;
   return (
-    <main className="w-[60%] space-y-2">
+    <main className="w-full space-y-2 md:w-[80%]">
       <section className="text-center">
         <h1 className="text-xl font-bold text-gray-950">Login</h1>
         <p className="text-sm font-semibold text-gray-400">
@@ -16,10 +28,44 @@ export const Login = () => {
         </p>
       </section>
       <section>
-        <Card className="space-y-3 p-5">
-          <Input />
-          <Input />
-          <Button className="w-full">Submit</Button>
+        <Card className="p-2">
+          <Form {...form}>
+            <form action="" className="space-y-5 md:space-y-3">
+              <div className="">
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs md:text-sm">
+                        Username
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="shadcn" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Username</FormLabel>
+                      <FormControl>
+                        <Input placeholder="shadcn" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div>
+                <Button className="w-full">Login</Button>
+              </div>
+            </form>
+          </Form>
         </Card>
       </section>
     </main>
