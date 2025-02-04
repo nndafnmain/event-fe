@@ -41,7 +41,7 @@ export const Register = () => {
                         Username
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="Cole Palmer" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -49,12 +49,12 @@ export const Register = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="email"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Username</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="palmer@chelsea.com" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -62,12 +62,16 @@ export const Register = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>Password</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input
+                          placeholder="*******"
+                          type="password"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -75,25 +79,12 @@ export const Register = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="referralCode"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>Referral code</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="username"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Username</FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="Referral code.." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
