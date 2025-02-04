@@ -12,10 +12,29 @@ import {
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { registerSchema, RegisterSchema } from "../schemas/register.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRegister } from "../hooks/useRegister";
 
 export const Register = () => {
-  const form = useForm();
-  let onSubmit;
+  const form = useForm<RegisterSchema>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      referralCode: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  const mutation = useRegister();
+
+  function onSubmit(values: RegisterSchema) {
+    const { email, password, username, referralCode } = values;
+    mutation.mutate({ email, password, username, referralCode });
+  }
+
   return (
     <main className="w-full space-y-2 md:w-[80%]">
       <section className="text-center">
@@ -30,7 +49,10 @@ export const Register = () => {
       <section>
         <Card className="p-2">
           <Form {...form}>
-            <form action="" className="space-y-5 md:space-y-3">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5 md:space-y-3"
+            >
               <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                 <FormField
                   control={form.control}
@@ -79,6 +101,19 @@ export const Register = () => {
                 />
                 <FormField
                   control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Confirm Password</FormLabel>
+                      <FormControl>
+                        <Input placeholder="********" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
                   name="referralCode"
                   render={({ field }) => (
                     <FormItem>
@@ -92,7 +127,9 @@ export const Register = () => {
                 />
               </div>
               <div>
-                <Button className="w-full">Register</Button>
+                <Button className="w-full" type="submit">
+                  Register
+                </Button>
               </div>
             </form>
           </Form>

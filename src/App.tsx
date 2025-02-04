@@ -2,10 +2,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Register } from "./features/auth/components/Register";
 import { Auth } from "./pages/auth/Auth";
 import { Login } from "./features/auth/components/Login";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster position="top-right" richColors />
       <Routes>
         <Route path="/auth" element={<Auth />}>
           <Route path="register" element={<Register />} />

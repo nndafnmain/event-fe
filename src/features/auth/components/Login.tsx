@@ -12,10 +12,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { loginSchema, LoginSchema } from "../schemas/login.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useLogin } from "../hooks/useLogin";
 
 export const Login = () => {
-  const form = useForm();
-  let onSubmit;
+  const form = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const mutation = useLogin();
+
+  function onSubmit(values: LoginSchema) {
+    mutation.mutate(values);
+  }
+
   return (
     <main className="w-full space-y-2 md:w-[80%]">
       <section className="text-center">
@@ -30,18 +45,21 @@ export const Login = () => {
       <section>
         <Card className="p-2">
           <Form {...form}>
-            <form action="" className="space-y-5 md:space-y-3">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5 md:space-y-3"
+            >
               <div className="">
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="email"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs md:text-sm">
-                        Username
+                        Email
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="enzo@gmail.com" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -49,12 +67,12 @@ export const Login = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>Password</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="********" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
