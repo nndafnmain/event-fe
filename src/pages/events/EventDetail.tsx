@@ -6,8 +6,9 @@ import { Calendar, Clock, LocateFixedIcon } from "lucide-react";
 
 export const EventDetail = () => {
   return (
-    <main className="md:container md:mt-10">
+    <main className="pb-16 md:container md:mt-10">
       <section className="grid grid-cols-1 gap-3 md:grid-cols-3">
+        {/* Image Section */}
         <section className="md:col-span-2">
           <img
             src="/event/cd1.png"
@@ -15,6 +16,8 @@ export const EventDetail = () => {
             className="w-full rounded-md md:w-[100%]"
           />
         </section>
+
+        {/* Event Info */}
         <section className="md:col-span-1">
           <Card className="flex h-full flex-col justify-between space-y-5 p-5">
             <h1 className="mb-10 text-2xl font-semibold">
@@ -47,6 +50,8 @@ export const EventDetail = () => {
             </CardFooter>
           </Card>
         </section>
+
+        {/* Description */}
         <section className="space-y-3 md:col-span-2 md:mt-10">
           <h1 className="text-xl font-bold">Deskripsi</h1>
           <p className="text-sm text-gray-500">
@@ -59,15 +64,62 @@ export const EventDetail = () => {
             pertunjukan yang akan bertema politik ini Pandji akan mencari tahu
             adakah niat jahat di balik tindak- tanduk beberapa nama di dunia
             politik Indonesia. Mens Rea Tour akan mulai berjalan di tahun 2025
+            dengan mengunjungi 10 kota nasional & 1 kota Jakarta. Mens Rea
+            adalah istilah hukum yang artinya "Niat Jahat" Dalam persidangan
+            seringkali yang harus dicari tahu adalah apakah ada niat jahat dalam
+            tindakan seseorang. Dalam Stand-Up Comedy Special ke 10, Pandji
+            Pragiwaksono ingin memberi pesan bahwa tidak ada niat jahat dari
+            yang dia bawakan di atas panggung hanyalah komedi dengan tujuan
+            membuat penonton tertawa. Namun pada saat yang bersamaan, di
+            pertunjukan yang akan bertema politik ini Pandji akan mencari tahu
+            adakah niat jahat di balik tindak- tanduk beberapa nama di dunia
+            politik Indonesia. Mens Rea Tour akan mulai berjalan di tahun 2025
+            dengan mengunjungi 10 kota nasional & 1 kota Jakarta. Mens Rea
+            adalah istilah hukum yang artinya "Niat Jahat" Dalam persidangan
+            seringkali yang harus dicari tahu adalah apakah ada niat jahat dalam
+            tindakan seseorang. Dalam Stand-Up Comedy Special ke 10, Pandji
+            Pragiwaksono ingin memberi pesan bahwa tidak ada niat jahat dari
+            yang dia bawakan di atas panggung hanyalah komedi dengan tujuan
+            membuat penonton tertawa. Namun pada saat yang bersamaan, di
+            pertunjukan yang akan bertema politik ini Pandji akan mencari tahu
+            adakah niat jahat di balik tindak- tanduk beberapa nama di dunia
+            politik Indonesia. Mens Rea Tour akan mulai berjalan di tahun 2025
+            dengan mengunjungi 10 kota nasional & 1 kota Jakarta. Mens Rea
+            adalah istilah hukum yang artinya "Niat Jahat" Dalam persidangan
+            seringkali yang harus dicari tahu adalah apakah ada niat jahat dalam
+            tindakan seseorang. Dalam Stand-Up Comedy Special ke 10, Pandji
+            Pragiwaksono ingin memberi pesan bahwa tidak ada niat jahat dari
+            yang dia bawakan di atas panggung hanyalah komedi dengan tujuan
+            membuat penonton tertawa. Namun pada saat yang bersamaan, di
+            pertunjukan yang akan bertema politik ini Pandji akan mencari tahu
+            adakah niat jahat di balik tindak- tanduk beberapa nama di dunia
+            politik Indonesia. Mens Rea Tour akan mulai berjalan di tahun 2025
+            dengan mengunjungi 10 kota nasional & 1 kota Jakarta. Mens Rea
+            adalah istilah hukum yang artinya "Niat Jahat" Dalam persidangan
+            seringkali yang harus dicari tahu adalah apakah ada niat jahat dalam
+            tindakan seseorang. Dalam Stand-Up Comedy Special ke 10, Pandji
+            Pragiwaksono ingin memberi pesan bahwa tidak ada niat jahat dari
+            yang dia bawakan di atas panggung hanyalah komedi dengan tujuan
+            membuat penonton tertawa. Namun pada saat yang bersamaan, di
+            pertunjukan yang akan bertema politik ini Pandji akan mencari tahu
+            adakah niat jahat di balik tindak- tanduk beberapa nama di dunia
+            politik Indonesia. Mens Rea Tour akan mulai berjalan di tahun 2025
             dengan mengunjungi 10 kota nasional & 1 kota Jakarta.
           </p>
         </section>
+
+        {/* Buy Ticket Button (Sticky on Desktop, Fixed on Mobile) */}
         <section className="md:col-span-1 md:mt-10">
-          <Card className="p-5">
-            <Button className="w-full">Buy ticket</Button>
+          <Card className="relative p-5 md:sticky md:top-10">
+            <Button className="hidden w-full md:block">Buy Ticket</Button>
           </Card>
         </section>
       </section>
+
+      {/* Fixed Buy Button for Mobile */}
+      <div className="fixed bottom-0 left-0 w-full bg-white p-4 shadow md:hidden">
+        <Button className="w-full">Buy Ticket</Button>
+      </div>
     </main>
   );
 };
