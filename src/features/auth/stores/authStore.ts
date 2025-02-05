@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { create } from "zustand";
 
 interface AuthStore {
@@ -13,6 +14,8 @@ interface AuthStore {
   setAuth: (token: string) => void;
   logout: () => void;
 }
+
+const navigate = useNavigate();
 
 export const useAuthStore = create<AuthStore>((set) => ({
   accessToken: localStorage.getItem("access_token") || null,
@@ -40,5 +43,6 @@ export const useAuthStore = create<AuthStore>((set) => ({
     set({ accessToken: null, user: null, isAuthenticated: false });
     localStorage.removeItem("access_token");
     localStorage.removeItem("user");
+    navigate("/auth/login");
   },
 }));
