@@ -15,7 +15,7 @@ interface AuthStore {
   logout: () => void;
 }
 
-const navigate = useNavigate();
+// const navigate = useNavigate();
 
 export const useAuthStore = create<AuthStore>((set) => ({
   accessToken: localStorage.getItem("access_token") || null,
@@ -43,6 +43,6 @@ export const useAuthStore = create<AuthStore>((set) => ({
     set({ accessToken: null, user: null, isAuthenticated: false });
     localStorage.removeItem("access_token");
     localStorage.removeItem("user");
-    navigate("/auth/login");
+    // navigate("/auth/login");
   },
 }));
